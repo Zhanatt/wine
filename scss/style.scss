@@ -1,0 +1,660 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&family=Playfair+Display:wght@400;500;700&display=swap');
+// === MIXIN ===
+@mixin title-before ($title-padd, $line-pos-left, $line-pos-translate, $width-line, $ta, $line-color){
+    position: relative;
+    padding: $title-padd;
+    font-family: $ff-title;
+    font-size: 36px;
+    line-height: 150%;
+    font-weight: 700;
+    text-align: $ta;
+    &::before{
+        content: '';
+        position: absolute;
+        width: $width-line;
+        height: 1px;
+        bottom: 0;
+        left: $line-pos-left;
+        transform: translate($line-pos-translate);
+        background-color: $line-color;
+    }
+}
+// === / MIXIN ===
+
+// === VRIABLES ===
+$ff-title: 'Playfair Display', serif;
+$ff-text-main: 'Montserrat', sans-serif;
+
+$color-accent:#7e6c27;
+$color-beige:#E6E3C4;
+$color-white:#FFFFFF;
+$color-black:#282828;
+// === / VRIABLES ===
+
+// === COMMON ===
+body{
+    font-family: $ff-text-main;
+    color: white;
+    font-size: 16px;
+    line-height: 20px;
+}
+a{color: inherit;}
+button{color: inherit; border: none;}
+
+.container{
+    max-width: 1130px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 10px;
+}
+.title{
+    font-size: 36;
+}
+// === / COMMON ===
+
+// === HEADER ===
+.header{
+    background: url(../src/images/header-bg.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center; 
+    &-top{
+        position: relative;
+        width: 100%;
+    }
+    &-body{
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        padding-bottom: 150px;
+    } 
+}
+.contacts{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 0 20px;
+}
+.header-top__burger{
+  display: none;  
+}
+.header-top-menu{
+    &__list{
+        display: flex;
+        justify-content: space-between;
+    }
+    &__item{
+        display: inline-block;
+        width: 100%;
+        text-align: center;
+        border-right: 1px solid $color-white;
+        border-top: 1px solid $color-white;
+        border-bottom: 1px solid $color-white;
+        padding: 13px 0;
+        transition: .3s;
+        &:last-child{
+            border-right: none;
+        }
+        &:hover{
+            background-color: $color-white;
+            color: $color-black; 
+            transition: .3s;
+        }
+        a{
+            display: inline-block;
+        }
+    }
+}
+.header-fixed{
+    position: fixed;
+    width: 100%;
+    top: 0;
+    padding: 0 100px 10px;
+    background-color: $color-accent;
+    z-index: 1;
+    box-shadow: 1px 1px 25px $color-black;
+
+    animation-name: animHeaderTop;
+    animation-duration: 1s;
+}
+@keyframes animHeaderTop {
+    0%{
+        opacity: 0;
+        top: -70px;
+    }
+    100%{
+        opacity: 1;
+        top: 0;
+    }
+}
+.header-padd{
+    padding: 10px 0;
+}
+.btn{
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    padding: 15px 30px;
+    background-color: $color-accent;
+    color: $color-white;
+    transition: .3s;
+    &:not(:last-child){
+        margin-right: 30px;
+    }
+    &:hover{
+        background-color: hsl(48, 56%, 23%);
+        transition: .3s;  
+    }
+}
+
+// === / HEADER ===
+
+// === ABOUT ===
+.about-wine{
+    background-color: $color-black;
+    padding: 100px 0;
+    &__frame{
+        border: 3px solid #C4C4C4;
+        padding: 60px 136px;
+        text-align: center;
+    }
+    &__title{
+        //@mixin title-before ($title-padd, $line-pos-left, $line-pos-translate, $width-line, $ta, $line-color)
+        @include title-before (0 0 40px, 50%, -50%, 160px, center, $color-white);
+    }
+    &__text{
+        padding: 40px 50px;
+        line-height: 150%;
+        font-weight: 400;
+    }
+}
+// === / ABOUT ===
+
+// === NEW ===
+.new-wine{
+    color: $color-black;
+    padding: 80px 0;
+    background: rgba(230, 227, 196, 1);
+    &__frame{
+        display: flex;
+        padding: 60px 0;
+        border-top: 1px solid $color-accent;
+        border-bottom: 1px solid $color-accent;
+    }
+    &__description{
+        max-width: 510px;
+        width: 100%;
+        margin-right: 60px;
+
+    }
+    &__subtitle{
+        line-height: 150%;
+        font-weight: 500;
+    }
+    &__title{
+        //@mixin title-before ($title-padd, $line-pos-left, $line-pos-translate, $width-line, $ta, $line-color)
+        @include title-before (30px 0, 0, 0, 160px, left, $color-black);
+    }
+    &__text{
+        margin: 30px 0;
+    }
+    &__item{
+        display: flex;
+        &:not(:last-child){
+            border-bottom: 1px solid $color-black;
+        }
+        &-year{
+            padding: 26px 24px;
+        }
+        &-title{
+            border-left: 1px solid $color-black;
+            padding: 10px 0 15px 30px;
+            font-family: $ff-title;
+            font-size: 18px;
+            line-height: 150%;
+            font-weight: 700;
+        }
+        &-title>span{
+            display: block;
+            padding-top: 5px;
+            font-family: $ff-text-main;
+            font-size: 14px;
+            line-height: 150%;
+            font-weight: 400;
+        }   
+    }
+    &__imgs{
+        width: 100%;
+    }
+    &__img:first-child{
+        margin-bottom: 30px;
+    }
+    &__img:last-child{
+        margin-left: 25px;
+    }
+    
+}
+
+    
+
+// === / NEW ===
+
+// === SIGN UP ===
+.sign-up{
+    background-color: $color-black;
+    height: 100%;
+    padding: 100px 0;
+    
+    &__body{
+        position: relative;
+        width: 100%;
+        border: 3px solid $color-white;
+        padding: 105px 0 80px;
+    }
+    &__title{
+        //@mixin title-before ($title-padd, $line-pos-left, $line-pos-translate, $width-line, $ta, $line-color)
+        @include title-before(0 10px 40px, 50%, -50%, 118px, center, $color-white);
+        position: absolute;
+        max-width: 490px;
+        width: 100%;
+        top: -7%;
+        left: 50%;
+        transform: translate(-50%);
+        background-color: $color-black;
+        
+    }
+}
+
+.sign-up__img:first-child{
+    position: absolute;
+    left: -30px;
+    top: -69px;
+}
+.sign-up__img:last-child{
+    position: absolute;
+    right: -53px;
+    top: -65px;
+}
+
+.form{
+    padding: 0 20px;
+    &__frame{
+        max-width: 540px;
+        width: 100%;
+        margin: 0 auto;
+        text-align: center;
+    }
+    &__text{
+        font-size: 16px;
+        line-height: 150%;
+        padding: 40px 0 70px;
+    }
+    &__input{
+        display: flex;
+        width: 50%;
+        
+        font-size: 13px;
+        border:none;
+        background-color: transparent;
+        border-bottom: 1px solid $color-white;
+        padding: 10px 0;
+        color: $color-white;
+        &::placeholder{
+            font-family: $ff-text-main;
+            color: $color-white;
+            font-weight: 500;
+            font-size: 13px;
+            line-height: 150%;
+        }
+    }
+    &__btn{
+        display: block;
+        width: 100%;
+        padding: 15px 0;
+        margin-top: 50px;
+        background-color: transparent;
+        border: 1px solid $color-white;
+        transition: .2s;
+
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 20px;
+        text-align: center;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        &:hover{
+            background-color: $color-white;
+            color: $color-black;
+            transition: .2s;
+        }
+    }
+}
+.form__input:last-child{
+    display: block;
+    width: 100%;
+    color: red;
+}
+// === / SIGN UP ===
+
+// === FOOTER ===
+.footer{
+    background-color: $color-accent;
+    height: 100%;
+    padding: 50px 0;
+}
+.footer-menu{
+    &__list-top{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    &__item-top{
+        display: inline-block;
+        width: 100%;
+        text-align: center;
+        border-top: 1px solid $color-white;
+        font-size: 14px;
+        line-height: 150%;
+        padding: 20px 0;
+        transition: .3s;
+        &:last-child{
+            border-right: none;
+        }
+        &:hover{
+            background-color: $color-white;
+            color: $color-black; 
+            transition: .3s;
+        }
+    }
+}
+.footer-menu{
+    &__list-bottom{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    &__item-bottom{
+        display: inline-block;
+        width: 100%;
+        text-align: center;
+        text-transform: uppercase;
+        border-right: 1px solid $color-white;
+        border-top: 1px solid $color-white;
+        border-bottom: 1px solid $color-white;
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 150%;
+        padding: 20px 0;
+        transition: .3s;
+        &:last-child{
+            border-right: none;
+        }
+        &:hover{
+            background-color: $color-white;
+            color: $color-black; 
+            transition: .3s;
+        }
+    }
+}
+.social{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+    padding: 18px 0;
+    border: 1px solid $color-white;
+    border-left: none;
+        &__link>svg>path{
+            transition: .2s;
+            &:hover{
+                fill: $color-black;
+                transition: .2s;
+            }
+        }
+}
+// === / FOOTER ===
+.button-scroll{
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    width: 60px;
+    height: 60px;
+    background-color: #ffffff;
+    border-radius: 50%;
+    box-shadow: 1px 1px 25px $color-black;
+    opacity: 0;
+    transition: 1s;
+    
+    &::before{
+        content: '🠕';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 40px;
+        color: $color-black;
+    }
+}
+// === MEDIA ===
+@media (max-width:1215px) {
+    // header ------------------
+    .header-top.header-fixed{
+        padding: 0 50px 10px;
+    }
+    // sign-up ------------------
+    .sign-up__img{
+        display: none;
+    }
+}
+@media (max-width:1040px) {
+    // header ------------------
+    .header-top.header-fixed{
+        padding: 0 30px 10px;
+    }
+    // about-wine ------------------
+    .about-wine{
+        padding: 50px 0;
+        &__frame{
+            padding: 40px 50px;
+        }
+    }
+    // new-wine ------------------
+    .new-wine{
+        padding: 40px 0;
+        &__description{
+            margin-right: 0;
+        }
+        &__imgs{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-evenly;
+        }
+        &__img{
+            margin: 0;
+        }
+        &__img:first-child{
+            display: none;
+        }
+        &__img:last-child{
+            margin-left: 0;
+        }
+    }
+    // sign-up ------------------
+    .sign-up{
+        padding: 50px 0 30px;
+        &__body{
+            padding: 50px 0 40px;
+        }
+    }
+    // footer ------------------
+    .footer{
+        padding: 25px 0;
+    }
+
+}
+@media (max-width:858px) {
+    // header ------------------
+    body.lock{
+        overflow: hidden;
+    }
+    .header-body{
+        padding-bottom: 100px;
+    }
+    .header-top{
+        padding: 0 10px;
+    }
+    .contacts{
+        position: absolute;
+        right: 10px;
+        display: inline-block;
+        flex-direction: column;
+        text-align: right;
+        padding: 10px 0;
+    }
+    .header-top__burger{
+        display: inline-block; 
+        position: relative; 
+        top: 20px;
+        width: 30px;
+        height: 20px;
+        z-index: 1;
+        span{
+            position: absolute;
+            background-color: #ffffff;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            top: 9px;
+            transition: .3s ease;
+        }
+        &::before,
+        &::after{
+            content: '';
+            background-color: #ffffff;
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            left: 0;
+            transition: .3s ease;
+        }
+        &::before{
+            top: 0;
+        }
+        &::after{
+            bottom: 0;
+        }
+      }
+    .header-top__burger.active::before{
+        transform: rotate(45deg);
+        top: 9px;
+    }
+    .header-top__burger.active::after{
+        transform: rotate(-45deg);
+        bottom: 9px;
+    }
+    .header-top__burger.active>span{
+        transform: scale(0)
+    }
+    .header-top-menu.active{
+        top: 0;
+    }
+    .header-top-menu{
+        position: fixed;
+        top: -100%;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, .8);
+        transition: .3s ease;
+        &__list{
+            padding: 60px 0 0 0;
+            flex-direction: column;
+        }
+        &__item{
+            
+            border-right: none;
+        }
+    }
+    .header-top.header-fixed{
+        height: 55px;
+        padding: 0 20px 10px;
+    }
+    // about-wine ------------------
+    .about-wine{
+        padding: 30px 0;
+        &__frame{
+            padding: 40px 25px;
+        }
+        &__text{
+            padding: 40px 0px;
+        }
+    }
+    // new-wine ------------------
+    .new-wine{
+        &__frame{
+            justify-content: center;
+            padding: 30px 0;
+        }
+        &__imgs{
+            display: none;   
+        }
+    }
+    // footer ------------------
+    .footer-menu{
+        &__list-top{
+            flex-direction: column;
+        }
+        &__list-bottom{
+            flex-direction: column;
+        }
+        &__item-top,
+        &__item-bottom,
+        .social{
+            border: none;
+            border-bottom: 1px solid $color-white ;
+            padding: 20px;
+        }  
+    }
+}
+@media (max-width:440px) {
+    // common ------------------
+    .btn{
+        display: block;
+        width: 100%;
+    }
+    // header ------------------
+    .contacts{
+        font-size: 13px;
+    }
+    .header-content>.btn:first-child{
+        margin-bottom: 10px;
+    }
+    // about-wine ------------------
+    .about-wine{
+        &__frame{
+            padding: 20px 25px
+        }
+        &__title{
+            //@mixin title-before ($title-padd, $line-pos-left, $line-pos-translate, $width-line, $ta, $line-color)
+            @include title-before (0 0 20px, 50%, -50%, 160px, center, $color-white);
+        }
+    }
+    // new-wine ------------------
+    .new-wine__title{
+        padding: 20px 0;
+    }
+    // sign-up ------------------
+    .form__text{
+        padding: 90px 0 70px;
+    }
+    // footer ------------------
+    .footer {
+        padding: 0;
+    }
+}
+// === / MEDIA ===
+
+
+
