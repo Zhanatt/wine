@@ -32,6 +32,10 @@ $color-black:#282828;
 // === / VRIABLES ===
 
 // === COMMON ===
+html{
+    // Smooth scrolling
+    scroll-behavior: smooth;
+}
 body{
     font-family: $ff-text-main;
     color: white;
@@ -46,9 +50,6 @@ button{color: inherit; border: none;}
     width: 100%;
     margin: 0 auto;
     padding: 0 10px;
-}
-.title{
-    font-size: 36;
 }
 // === / COMMON ===
 
@@ -75,7 +76,7 @@ button{color: inherit; border: none;}
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 30px 0 20px;
+    padding: 10px 0;
 }
 .header-top__burger{
   display: none;  
@@ -129,9 +130,7 @@ button{color: inherit; border: none;}
         top: 0;
     }
 }
-.header-padd{
-    padding: 10px 0;
-}
+
 .btn{
     text-transform: uppercase;
     letter-spacing: .1em;
@@ -330,10 +329,25 @@ button{color: inherit; border: none;}
         }
     }
 }
-.form__input:last-child{
-    display: block;
-    width: 100%;
-    color: red;
+
+.form{
+    &__input-box{
+        display: flex;
+    }
+    &__input:first-child{
+        width: 50%;
+        margin-right: 30px;
+    }
+    &__input:nth-child(2){
+        width: 50%;
+    }
+    &__input-mod{
+        display: block;
+        width: 100%;
+        padding-top: 40px;
+        
+    }
+ 
 }
 // === / SIGN UP ===
 
@@ -639,15 +653,41 @@ button{color: inherit; border: none;}
         &__title{
             //@mixin title-before ($title-padd, $line-pos-left, $line-pos-translate, $width-line, $ta, $line-color)
             @include title-before (0 0 20px, 50%, -50%, 160px, center, $color-white);
+            font-size: 30px;
         }
     }
     // new-wine ------------------
     .new-wine__title{
         padding: 20px 0;
+        font-size: 30px;
     }
     // sign-up ------------------
-    .form__text{
-        padding: 90px 0 70px;
+    .sign-up{
+        &__body{
+            padding: 20px 0 40px;
+        }
+        &__title{
+            @include title-before (0 0 22px, 50%, -50%, 160px, center, $color-white);
+            font-size: 30px;
+        }
+    }
+    .form{
+        &__text{
+            padding: 48px 0 70px;
+        }
+        &__input-box{
+            display: block;          
+        }
+        &__input:first-child{
+            width: 100%;
+        }
+        &__input:nth-child(2){
+            width: 100%;
+            padding-top: 30px;
+        }
+        &__input-mod{
+            padding-top: 30px;
+        }
     }
     // footer ------------------
     .footer {

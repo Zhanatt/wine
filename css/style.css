@@ -1,5 +1,9 @@
 @charset "UTF-8";
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&family=Playfair+Display:wght@400;500;700&display=swap");
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: "Montserrat", sans-serif;
   color: white;
@@ -21,10 +25,6 @@ button {
   width: 100%;
   margin: 0 auto;
   padding: 0 10px;
-}
-
-.title {
-  font-size: 36;
 }
 
 .header {
@@ -65,7 +65,7 @@ button {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  padding: 30px 0 20px;
+  padding: 10px 0;
 }
 
 .header-top__burger {
@@ -140,10 +140,6 @@ button {
     top: 0;
   }
 }
-.header-padd {
-  padding: 10px 0;
-}
-
 .btn {
   text-transform: uppercase;
   letter-spacing: 0.1em;
@@ -415,10 +411,22 @@ button {
   transition: 0.2s;
 }
 
-.form__input:last-child {
+.form__input-box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.form__input:first-child {
+  width: 50%;
+  margin-right: 30px;
+}
+.form__input:nth-child(2) {
+  width: 50%;
+}
+.form__input-mod {
   display: block;
   width: 100%;
-  color: red;
+  padding-top: 40px;
 }
 
 .footer {
@@ -779,6 +787,7 @@ button {
     line-height: 150%;
     font-weight: 700;
     text-align: center;
+    font-size: 30px;
   }
   .about-wine__title::before {
     content: "";
@@ -794,10 +803,49 @@ button {
 
   .new-wine__title {
     padding: 20px 0;
+    font-size: 30px;
+  }
+
+  .sign-up__body {
+    padding: 20px 0 40px;
+  }
+  .sign-up__title {
+    position: relative;
+    padding: 0 0 22px;
+    font-family: "Playfair Display", serif;
+    font-size: 36px;
+    line-height: 150%;
+    font-weight: 700;
+    text-align: center;
+    font-size: 30px;
+  }
+  .sign-up__title::before {
+    content: "";
+    position: absolute;
+    width: 160px;
+    height: 1px;
+    bottom: 0;
+    left: 50%;
+    -webkit-transform: translate(-50%);
+            transform: translate(-50%);
+    background-color: #FFFFFF;
   }
 
   .form__text {
-    padding: 90px 0 70px;
+    padding: 48px 0 70px;
+  }
+  .form__input-box {
+    display: block;
+  }
+  .form__input:first-child {
+    width: 100%;
+  }
+  .form__input:nth-child(2) {
+    width: 100%;
+    padding-top: 30px;
+  }
+  .form__input-mod {
+    padding-top: 30px;
   }
 
   .footer {
