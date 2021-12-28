@@ -79,7 +79,8 @@ button{color: inherit; border: none;}
     padding: 10px 0;
 }
 .header-top__burger{
-  display: none;  
+  display: none; 
+  cursor: pointer; 
 }
 .header-top-menu{
     &__list{
@@ -439,15 +440,28 @@ button{color: inherit; border: none;}
     box-shadow: 1px 1px 25px $color-black;
     opacity: 0;
     transition: 1s;
-    
+    cursor: pointer; 
     &::before{
-        content: '🠕';
+        content: '';
         position: absolute;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        font-size: 40px;
-        color: $color-black;
+        width: 4px;
+        height: 30px;
+        background-color: $color-black;
+    }
+    &::after{
+        content: '';
+        position: absolute;
+        top: 34%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 0px;
+        height: 0px;
+        border-left: 10px solid transparent;
+        border-right: 10px solid transparent;
+        border-bottom: 13px solid $color-black;
     }
 }
 // === MEDIA ===
@@ -667,7 +681,7 @@ button{color: inherit; border: none;}
             padding: 20px 0 40px;
         }
         &__title{
-            @include title-before (0 0 22px, 50%, -50%, 160px, center, $color-white);
+            @include title-before (0 10px 22px, 50%, -50%, 160px, center, $color-white);
             font-size: 30px;
         }
     }
